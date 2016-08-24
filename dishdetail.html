@@ -1,0 +1,35 @@
+
+    <div class="container">
+        <div class="row row-content" ng-controller= "dishDetailController as detailCtrl">
+            <div class="col-xs-12">
+              <ul class="media-list">
+                <li class="media">
+                    <div class="media-left media-middle">
+                        <a href="#">
+                        <img class="media-object img-thumbnail"
+                         ng-src={{detailCtrl.dish.image}} alt="Uthappizza">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{detailCtrl.dish.name}}
+                         <span class="label label-danger">{{detailCtrl.dish.label}}</span>
+                         <span class="badge">{{detailCtrl.dish.price | currency}}</span></h2>
+                        <p>{{detailCtrl.dish.description}}</p>
+            </div>
+                  </li>
+                    </ul>
+                  </div>
+            
+            <div class="col-xs-9 col-xs-offset-1">
+                <h3>Customer Review</h3>
+                <p>Sort by: </p><input type="text" ng-model="query">
+                <blockquote ng-repeat="word in detailCtrl.dish.comments | orderBy: query">
+                    <p>Rating: {{word.rating}}</p>
+                    <p>{{word.comment}}</p>
+                    <footer>{{word.author}} {{word.date | date}}</footer>
+                </blockquote>
+            </div>
+        </div>
+        </div>
+
+  
